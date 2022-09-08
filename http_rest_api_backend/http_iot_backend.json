@@ -1,0 +1,992 @@
+[
+    {
+        "id": "9bb3b05c1d02c2e1",
+        "type": "tab",
+        "label": "kt_session_2",
+        "disabled": true,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "59ff2a1.fa600d4",
+        "type": "http in",
+        "z": "9bb3b05c1d02c2e1",
+        "name": "",
+        "url": "/hello",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 220,
+        "y": 160,
+        "wires": [
+            [
+                "54c1e70d.ab3e18"
+            ]
+        ]
+    },
+    {
+        "id": "54c1e70d.ab3e18",
+        "type": "template",
+        "z": "9bb3b05c1d02c2e1",
+        "name": "page",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "<html>\n    <head></head>\n    <body>\n        <h1>Hello Nodered KT session 1</h1>\n    </body>\n</html>",
+        "x": 370,
+        "y": 160,
+        "wires": [
+            [
+                "266c286f.d993d8"
+            ]
+        ]
+    },
+    {
+        "id": "266c286f.d993d8",
+        "type": "http response",
+        "z": "9bb3b05c1d02c2e1",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 510,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "b34dd1af.4cb23",
+        "type": "template",
+        "z": "9bb3b05c1d02c2e1",
+        "name": "page",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "<html>\n    <head></head>\n    <body>\n        <h1>Hello {{req.query.name}}\n        at timestamp : {{flow.fv1}}</h1>\n    </body>\n</html>",
+        "output": "str",
+        "x": 410,
+        "y": 420,
+        "wires": [
+            [
+                "b828f6a6.47d708"
+            ]
+        ]
+    },
+    {
+        "id": "1052941d.efad6c",
+        "type": "http in",
+        "z": "9bb3b05c1d02c2e1",
+        "name": "",
+        "url": "/hello-query-2",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 250,
+        "y": 420,
+        "wires": [
+            [
+                "b34dd1af.4cb23"
+            ]
+        ]
+    },
+    {
+        "id": "b828f6a6.47d708",
+        "type": "http response",
+        "z": "9bb3b05c1d02c2e1",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 550,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "8d77076b94878671",
+        "type": "comment",
+        "z": "9bb3b05c1d02c2e1",
+        "name": "curl http://localhost:1880/hello-query-1?name=Nick",
+        "info": "",
+        "x": 350,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "377090d3cf2e8e8c",
+        "type": "comment",
+        "z": "9bb3b05c1d02c2e1",
+        "name": "GET method",
+        "info": "",
+        "x": 230,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "ce53954b.31ac68",
+        "type": "http response",
+        "z": "9bb3b05c1d02c2e1",
+        "name": "",
+        "x": 610,
+        "y": 640,
+        "wires": []
+    },
+    {
+        "id": "288a7c0.fd77584",
+        "type": "template",
+        "z": "9bb3b05c1d02c2e1",
+        "name": "page",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "<html>\n    <head></head>\n    <body>\n        <h1>Hello {{req.params.name}}!</h1>\n    </body>\n</html>",
+        "x": 470,
+        "y": 640,
+        "wires": [
+            [
+                "ce53954b.31ac68"
+            ]
+        ]
+    },
+    {
+        "id": "7665c67d.899a38",
+        "type": "http in",
+        "z": "9bb3b05c1d02c2e1",
+        "name": "",
+        "url": "/hello-param-1/:name",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 270,
+        "y": 640,
+        "wires": [
+            [
+                "288a7c0.fd77584"
+            ]
+        ]
+    },
+    {
+        "id": "010e52605578bc42",
+        "type": "comment",
+        "z": "9bb3b05c1d02c2e1",
+        "name": "http://localhost:1880//hello-param-1/Nick ",
+        "info": "",
+        "x": 320,
+        "y": 560,
+        "wires": []
+    },
+    {
+        "id": "301c0006fb3adbe1",
+        "type": "comment",
+        "z": "9bb3b05c1d02c2e1",
+        "name": "http://example.com/hello-param-2/Dave",
+        "info": "",
+        "x": 310,
+        "y": 600,
+        "wires": []
+    },
+    {
+        "id": "2ad66dc58a0c10b2",
+        "type": "comment",
+        "z": "9bb3b05c1d02c2e1",
+        "name": "Query based GET",
+        "info": "",
+        "x": 250,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "5d5e866a8b937acd",
+        "type": "comment",
+        "z": "9bb3b05c1d02c2e1",
+        "name": "Param based GET",
+        "info": "",
+        "x": 250,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "9545f88b516fa1bf",
+        "type": "http in",
+        "z": "9bb3b05c1d02c2e1",
+        "name": "",
+        "url": "/hello-raw",
+        "method": "post",
+        "swaggerDoc": "",
+        "x": 720,
+        "y": 180,
+        "wires": [
+            [
+                "831eac54873b5114",
+                "2e0e1fee526246f0",
+                "75759149681517eb"
+            ]
+        ]
+    },
+    {
+        "id": "831eac54873b5114",
+        "type": "template",
+        "z": "9bb3b05c1d02c2e1",
+        "name": "page",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "<html>\n    <head></head>\n    <body>\n        <h1>Hello {{ payload }}!</h1>\n    </body>\n</html>",
+        "x": 970,
+        "y": 180,
+        "wires": [
+            [
+                "ca85545309718457"
+            ]
+        ]
+    },
+    {
+        "id": "ca85545309718457",
+        "type": "http response",
+        "z": "9bb3b05c1d02c2e1",
+        "name": "",
+        "x": 1110,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "c6dbb586cff5b013",
+        "type": "comment",
+        "z": "9bb3b05c1d02c2e1",
+        "name": "curl -X POST -d 'Nick' -H \"Content-type: text/plain\" http://localhost:1880/hello-raw",
+        "info": "",
+        "x": 920,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "fdb00a91e0073118",
+        "type": "http in",
+        "z": "9bb3b05c1d02c2e1",
+        "name": "",
+        "url": "/hello-2",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 230,
+        "y": 200,
+        "wires": [
+            [
+                "5925b2bf1cc9a1f8"
+            ]
+        ]
+    },
+    {
+        "id": "ac137a72556bd4cd",
+        "type": "http response",
+        "z": "9bb3b05c1d02c2e1",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 510,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "a1a747d5558f6e23",
+        "type": "inject",
+        "z": "9bb3b05c1d02c2e1",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "1",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 810,
+        "y": 420,
+        "wires": [
+            [
+                "ddbf3845f5023035"
+            ]
+        ]
+    },
+    {
+        "id": "5925b2bf1cc9a1f8",
+        "type": "template",
+        "z": "9bb3b05c1d02c2e1",
+        "name": "",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "<html>\n    <head></head>\n    <body>\n<h2>This is the payload: {{flow.fv1}}</h2>\n<h2>This is the flow var 1: {{flow.var_1}}</h2>\n<h2>This is the flow var 2: {{flow.var_2}}</h2>\n    </body>\n</html>",
+        "output": "str",
+        "x": 380,
+        "y": 200,
+        "wires": [
+            [
+                "ac137a72556bd4cd"
+            ]
+        ]
+    },
+    {
+        "id": "ddbf3845f5023035",
+        "type": "change",
+        "z": "9bb3b05c1d02c2e1",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "fv1",
+                "pt": "flow",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 990,
+        "y": 420,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "4b2774afa0096e24",
+        "type": "template",
+        "z": "9bb3b05c1d02c2e1",
+        "name": "page",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "<html>\n    <head></head>\n    <body>\n        <h1>Hello {{req.query.name}}</h1>\n    </body>\n</html>",
+        "output": "str",
+        "x": 410,
+        "y": 380,
+        "wires": [
+            [
+                "3de63eb811bd9a35"
+            ]
+        ]
+    },
+    {
+        "id": "a59bb163f43a3933",
+        "type": "http in",
+        "z": "9bb3b05c1d02c2e1",
+        "name": "",
+        "url": "/hello-query-1",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 250,
+        "y": 380,
+        "wires": [
+            [
+                "4b2774afa0096e24"
+            ]
+        ]
+    },
+    {
+        "id": "3de63eb811bd9a35",
+        "type": "http response",
+        "z": "9bb3b05c1d02c2e1",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 550,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "a857b393e19d9f9d",
+        "type": "http response",
+        "z": "9bb3b05c1d02c2e1",
+        "name": "",
+        "x": 610,
+        "y": 680,
+        "wires": []
+    },
+    {
+        "id": "911e9b96982da414",
+        "type": "template",
+        "z": "9bb3b05c1d02c2e1",
+        "name": "page",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "<html>\n    <head></head>\n    <body>\n        <h1>Hello {{req.params.name}}!\n        at timestamp : {{flow.fv1}}</h1>\n    </body>\n</html>",
+        "x": 470,
+        "y": 680,
+        "wires": [
+            [
+                "a857b393e19d9f9d"
+            ]
+        ]
+    },
+    {
+        "id": "01e4be69d0955995",
+        "type": "http in",
+        "z": "9bb3b05c1d02c2e1",
+        "name": "",
+        "url": "/hello-param-2/:name",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 270,
+        "y": 680,
+        "wires": [
+            [
+                "911e9b96982da414"
+            ]
+        ]
+    },
+    {
+        "id": "b7b566045ff30de6",
+        "type": "comment",
+        "z": "9bb3b05c1d02c2e1",
+        "name": "http://localhost:1880/hello",
+        "info": "",
+        "x": 270,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "1d1e9cdedef5c330",
+        "type": "comment",
+        "z": "9bb3b05c1d02c2e1",
+        "name": "http://localhost:1880/hello-2",
+        "info": "",
+        "x": 280,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "6b4547ec76547347",
+        "type": "http in",
+        "z": "9bb3b05c1d02c2e1",
+        "name": "",
+        "url": "/kt1",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 220,
+        "y": 800,
+        "wires": [
+            [
+                "37d59ae5c5682afc"
+            ]
+        ]
+    },
+    {
+        "id": "10050c4254c6669f",
+        "type": "http response",
+        "z": "9bb3b05c1d02c2e1",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 550,
+        "y": 800,
+        "wires": []
+    },
+    {
+        "id": "37d59ae5c5682afc",
+        "type": "template",
+        "z": "9bb3b05c1d02c2e1",
+        "name": "",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "hi kt session 2 : http rest apis",
+        "output": "str",
+        "x": 400,
+        "y": 800,
+        "wires": [
+            [
+                "10050c4254c6669f"
+            ]
+        ]
+    },
+    {
+        "id": "2291a95fc4c3728d",
+        "type": "http in",
+        "z": "9bb3b05c1d02c2e1",
+        "name": "",
+        "url": "/hello-query-3",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 250,
+        "y": 460,
+        "wires": [
+            [
+                "b4e39599a8770765"
+            ]
+        ]
+    },
+    {
+        "id": "b4e39599a8770765",
+        "type": "template",
+        "z": "9bb3b05c1d02c2e1",
+        "name": "",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "Hello {{req.query.name}}",
+        "output": "str",
+        "x": 420,
+        "y": 460,
+        "wires": [
+            [
+                "1a739018499f71a6"
+            ]
+        ]
+    },
+    {
+        "id": "1a739018499f71a6",
+        "type": "http response",
+        "z": "9bb3b05c1d02c2e1",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 550,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "2e0e1fee526246f0",
+        "type": "json",
+        "z": "9bb3b05c1d02c2e1",
+        "name": "",
+        "property": "payload",
+        "action": "obj",
+        "pretty": false,
+        "x": 930,
+        "y": 260,
+        "wires": [
+            [
+                "f56839a156b851ec"
+            ]
+        ]
+    },
+    {
+        "id": "f56839a156b851ec",
+        "type": "debug",
+        "z": "9bb3b05c1d02c2e1",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1130,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "280aa4994540b16a",
+        "type": "function",
+        "z": "9bb3b05c1d02c2e1",
+        "name": "",
+        "func": "msg.payload = 5*Math.random()\nmsg.key_1 = msg.payload + 1\nmsg.key_2 = msg.payload + 2\nmsg.key_3 = msg.payload + 3\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1080,
+        "y": 600,
+        "wires": [
+            [
+                "14e8063a91660b3c",
+                "8f406994ff668b60",
+                "f6a0176e992eeed2",
+                "4971242a19b547ab"
+            ]
+        ]
+    },
+    {
+        "id": "2830184e97110d36",
+        "type": "inject",
+        "z": "9bb3b05c1d02c2e1",
+        "name": "",
+        "props": [],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 850,
+        "y": 600,
+        "wires": [
+            [
+                "280aa4994540b16a"
+            ]
+        ]
+    },
+    {
+        "id": "14e8063a91660b3c",
+        "type": "debug",
+        "z": "9bb3b05c1d02c2e1",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1290,
+        "y": 540,
+        "wires": []
+    },
+    {
+        "id": "8f406994ff668b60",
+        "type": "function",
+        "z": "9bb3b05c1d02c2e1",
+        "name": "",
+        "func": "msg.payload = msg.key_1\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1300,
+        "y": 600,
+        "wires": [
+            [
+                "b0975b609b01fed2",
+                "d5c291b7166cd953"
+            ]
+        ]
+    },
+    {
+        "id": "f6a0176e992eeed2",
+        "type": "function",
+        "z": "9bb3b05c1d02c2e1",
+        "name": "",
+        "func": "msg.payload = msg.key_2\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1300,
+        "y": 640,
+        "wires": [
+            [
+                "7df9e2635a3987b5",
+                "b0dd3d2cdc78d342"
+            ]
+        ]
+    },
+    {
+        "id": "4971242a19b547ab",
+        "type": "function",
+        "z": "9bb3b05c1d02c2e1",
+        "name": "",
+        "func": "msg.payload = msg.key_3\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1300,
+        "y": 700,
+        "wires": [
+            [
+                "3da5b1de9bd8096f",
+                "f00c13107405cc77"
+            ]
+        ]
+    },
+    {
+        "id": "69383c47cbf18c0c",
+        "type": "comment",
+        "z": "9bb3b05c1d02c2e1",
+        "name": "point 1",
+        "info": "",
+        "x": 1070,
+        "y": 560,
+        "wires": []
+    },
+    {
+        "id": "e2d87e0f171599cc",
+        "type": "comment",
+        "z": "9bb3b05c1d02c2e1",
+        "name": "point 2",
+        "info": "",
+        "x": 1290,
+        "y": 500,
+        "wires": []
+    },
+    {
+        "id": "b0975b609b01fed2",
+        "type": "debug",
+        "z": "9bb3b05c1d02c2e1",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1490,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "7df9e2635a3987b5",
+        "type": "debug",
+        "z": "9bb3b05c1d02c2e1",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1490,
+        "y": 500,
+        "wires": []
+    },
+    {
+        "id": "3da5b1de9bd8096f",
+        "type": "debug",
+        "z": "9bb3b05c1d02c2e1",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1490,
+        "y": 560,
+        "wires": []
+    },
+    {
+        "id": "d5c291b7166cd953",
+        "type": "mqtt out",
+        "z": "9bb3b05c1d02c2e1",
+        "name": "",
+        "topic": "kt/topic1",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "3f182f8509ae6291",
+        "x": 1620,
+        "y": 620,
+        "wires": []
+    },
+    {
+        "id": "b0dd3d2cdc78d342",
+        "type": "mqtt out",
+        "z": "9bb3b05c1d02c2e1",
+        "name": "",
+        "topic": "kt/topic2",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "3f182f8509ae6291",
+        "x": 1620,
+        "y": 680,
+        "wires": []
+    },
+    {
+        "id": "f00c13107405cc77",
+        "type": "mqtt out",
+        "z": "9bb3b05c1d02c2e1",
+        "name": "",
+        "topic": "kt/topic3",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "3f182f8509ae6291",
+        "x": 1620,
+        "y": 740,
+        "wires": []
+    },
+    {
+        "id": "66b2eb3646adbd08",
+        "type": "function",
+        "z": "9bb3b05c1d02c2e1",
+        "name": "",
+        "func": "var1 = flow.get(\"var_1\")\nvar2 = flow.get(\"var_2\")\n\nvar1 += 1\nvar2 -= 1\n\nflow.set(\"var_1\", var1)\nflow.set(\"var_2\", var2)",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "// Code added here will be run once\n// whenever the node is started.\nflow.set(\"var_1\", 0)\nflow.set(\"var_2\", 100)",
+        "finalize": "",
+        "libs": [],
+        "x": 1080,
+        "y": 720,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "564d26ef22341179",
+        "type": "inject",
+        "z": "9bb3b05c1d02c2e1",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "1",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "1",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 870,
+        "y": 720,
+        "wires": [
+            [
+                "66b2eb3646adbd08"
+            ]
+        ]
+    },
+    {
+        "id": "72130443b64a655a",
+        "type": "inject",
+        "z": "9bb3b05c1d02c2e1",
+        "name": "",
+        "props": [
+            {
+                "p": "var_1",
+                "v": "var_1",
+                "vt": "flow"
+            },
+            {
+                "p": "var_2",
+                "v": "var_2",
+                "vt": "flow"
+            }
+        ],
+        "repeat": "3",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 850,
+        "y": 780,
+        "wires": [
+            [
+                "8f9eb2fb07e0e0b1"
+            ]
+        ]
+    },
+    {
+        "id": "8f9eb2fb07e0e0b1",
+        "type": "debug",
+        "z": "9bb3b05c1d02c2e1",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1030,
+        "y": 780,
+        "wires": []
+    },
+    {
+        "id": "75759149681517eb",
+        "type": "debug",
+        "z": "9bb3b05c1d02c2e1",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 930,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "6062187ec65016f5",
+        "type": "comment",
+        "z": "9bb3b05c1d02c2e1",
+        "name": "curl -X POST -d \"{\\\"key_1\\\":\\\"value_1\\\",\\\"key_2\\\":123}\" -H \"Content-type: application/json\" http://localhost:1880/hello-raw",
+        "info": "",
+        "x": 1040,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "f30d5cec22d833a8",
+        "type": "comment",
+        "z": "9bb3b05c1d02c2e1",
+        "name": "curl -X POST -d \"{\\\"key_1\\\":\\\"value_1\\\",\\\"key_2\\\":123}\" -H \"Content-type: text/plain\" http://localhost:1880/hello-raw",
+        "info": "",
+        "x": 1020,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "3f182f8509ae6291",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "192.168.1.100",
+        "port": "9001",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "sessionExpiry": ""
+    }
+]
