@@ -1,0 +1,555 @@
+[
+    {
+        "id": "e50538167b48902f",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "195cb36ca0d47e38",
+        "type": "inject",
+        "z": "e50538167b48902f",
+        "name": "Run Basic Discovery",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "python -u python_scripts/aws-iot-device-sdk-python-v2/samples/basic_discovery_old.py \\    --thing_name SayaliRPIClient \\    --topic 'client/SayaliRPIClient/d2e/ipc/message' \\    --message 'Hello World from SayaliRPIClient!' \\    --ca_file python_scripts/aws-iot-device-sdk-python-v2/samples/certs/1/AmazonRootCA1.pem \\    --cert python_scripts/aws-iot-device-sdk-python-v2/samples/certs/1/device.pem.crt \\    --key python_scripts/aws-iot-device-sdk-python-v2/samples/certs/1/private.pem.key \\    --region us-east-1 \\    --verbosity Warn",
+        "payloadType": "str",
+        "x": 210,
+        "y": 180,
+        "wires": [
+            [
+                "4afa5d4504bd6821"
+            ]
+        ]
+    },
+    {
+        "id": "e0e84c84101b33dd",
+        "type": "exec",
+        "z": "e50538167b48902f",
+        "command": "",
+        "addpay": "payload",
+        "append": "",
+        "useSpawn": "true",
+        "timer": "",
+        "winHide": false,
+        "oldrc": false,
+        "name": "",
+        "x": 950,
+        "y": 360,
+        "wires": [
+            [
+                "c564ecd763ade550",
+                "7ea168f40698ede3"
+            ],
+            [
+                "c564ecd763ade550",
+                "ec3b9fe970e08559"
+            ],
+            [
+                "c564ecd763ade550",
+                "e9c1c236986eb458"
+            ]
+        ]
+    },
+    {
+        "id": "c564ecd763ade550",
+        "type": "debug",
+        "z": "e50538167b48902f",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1200,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "7ea168f40698ede3",
+        "type": "ui_text",
+        "z": "e50538167b48902f",
+        "group": "3f39832282e378d0",
+        "order": 1,
+        "width": 15,
+        "height": 4,
+        "name": "",
+        "label": "Std OP",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 1200,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "ec3b9fe970e08559",
+        "type": "ui_text",
+        "z": "e50538167b48902f",
+        "group": "3f39832282e378d0",
+        "order": 2,
+        "width": "15",
+        "height": "4",
+        "name": "",
+        "label": "Std Err",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 1200,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "e9c1c236986eb458",
+        "type": "ui_text",
+        "z": "e50538167b48902f",
+        "group": "3f39832282e378d0",
+        "order": 5,
+        "width": "15",
+        "height": "1",
+        "name": "",
+        "label": "Return Code",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 1210,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "db2b592e739a83b3",
+        "type": "inject",
+        "z": "e50538167b48902f",
+        "name": "Stop Basic Discovery",
+        "props": [
+            {
+                "p": "kill",
+                "v": "",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 220,
+        "y": 420,
+        "wires": [
+            [
+                "1fd9dc290af781d1"
+            ]
+        ]
+    },
+    {
+        "id": "d78e3e90d9a04395",
+        "type": "function",
+        "z": "e50538167b48902f",
+        "name": "function 1",
+        "func": "",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "// Code added here will be run once\n// whenever the node is started.\nflow.set(\"basic_discovery\", 0)",
+        "finalize": "",
+        "libs": [],
+        "x": 180,
+        "y": 100,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "8684e1f572424753",
+        "type": "change",
+        "z": "e50538167b48902f",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "basic_discovery",
+                "pt": "flow",
+                "to": "1",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 710,
+        "y": 240,
+        "wires": [
+            [
+                "e0e84c84101b33dd",
+                "3cfdc9e07159b543"
+            ]
+        ]
+    },
+    {
+        "id": "dc9ec8f8d347f83a",
+        "type": "switch",
+        "z": "e50538167b48902f",
+        "name": "",
+        "property": "basic_discovery",
+        "propertyType": "flow",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "0",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 530,
+        "y": 240,
+        "wires": [
+            [
+                "8684e1f572424753"
+            ]
+        ]
+    },
+    {
+        "id": "13e4ce949acacb8a",
+        "type": "switch",
+        "z": "e50538167b48902f",
+        "name": "",
+        "property": "basic_discovery",
+        "propertyType": "flow",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 530,
+        "y": 480,
+        "wires": [
+            [
+                "4f1dea911d37d8af"
+            ]
+        ]
+    },
+    {
+        "id": "4f1dea911d37d8af",
+        "type": "change",
+        "z": "e50538167b48902f",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "basic_discovery",
+                "pt": "flow",
+                "to": "0",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 710,
+        "y": 480,
+        "wires": [
+            [
+                "e0e84c84101b33dd",
+                "fcb6ea685d2eddf2"
+            ]
+        ]
+    },
+    {
+        "id": "81cbc777a3148f28",
+        "type": "ui_button",
+        "z": "e50538167b48902f",
+        "name": "",
+        "group": "91ee4ef455b0dd3f",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Start ",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 170,
+        "y": 240,
+        "wires": [
+            [
+                "4afa5d4504bd6821"
+            ]
+        ]
+    },
+    {
+        "id": "00c1b3c9516cbf1e",
+        "type": "ui_button",
+        "z": "e50538167b48902f",
+        "name": "",
+        "group": "91ee4ef455b0dd3f",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Stop",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 170,
+        "y": 480,
+        "wires": [
+            [
+                "1fd9dc290af781d1"
+            ]
+        ]
+    },
+    {
+        "id": "4afa5d4504bd6821",
+        "type": "change",
+        "z": "e50538167b48902f",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "python -u python_scripts/aws-iot-device-sdk-python-v2/samples/basic_discovery_old.py \\    --thing_name SayaliRPIClient \\    --topic 'client/SayaliRPIClient/d2e/ipc/message' \\    --message 'Hello World from SayaliRPIClient!' \\    --ca_file python_scripts/aws-iot-device-sdk-python-v2/samples/certs/1/AmazonRootCA1.pem \\    --cert python_scripts/aws-iot-device-sdk-python-v2/samples/certs/1/device.pem.crt \\    --key python_scripts/aws-iot-device-sdk-python-v2/samples/certs/1/private.pem.key \\    --region us-east-1 \\    --verbosity Warn",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 340,
+        "y": 240,
+        "wires": [
+            [
+                "dc9ec8f8d347f83a"
+            ]
+        ]
+    },
+    {
+        "id": "1fd9dc290af781d1",
+        "type": "change",
+        "z": "e50538167b48902f",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "kill",
+                "pt": "msg",
+                "to": "",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 350,
+        "y": 480,
+        "wires": [
+            [
+                "13e4ce949acacb8a"
+            ]
+        ]
+    },
+    {
+        "id": "959ff11b05f75c45",
+        "type": "ui_button",
+        "z": "e50538167b48902f",
+        "name": "",
+        "group": "3f39832282e378d0",
+        "order": 7,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Clear Terminal",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 740,
+        "y": 160,
+        "wires": [
+            [
+                "4ac094d6390aabf1"
+            ]
+        ]
+    },
+    {
+        "id": "4ac094d6390aabf1",
+        "type": "change",
+        "z": "e50538167b48902f",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 940,
+        "y": 160,
+        "wires": [
+            [
+                "7ea168f40698ede3",
+                "ec3b9fe970e08559",
+                "e9c1c236986eb458"
+            ]
+        ]
+    },
+    {
+        "id": "3cfdc9e07159b543",
+        "type": "link out",
+        "z": "e50538167b48902f",
+        "name": "link out 1",
+        "mode": "link",
+        "links": [
+            "860bc6f7da47d3bc"
+        ],
+        "x": 915,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "fcb6ea685d2eddf2",
+        "type": "link out",
+        "z": "e50538167b48902f",
+        "name": "link out 2",
+        "mode": "link",
+        "links": [
+            "860bc6f7da47d3bc"
+        ],
+        "x": 915,
+        "y": 480,
+        "wires": []
+    },
+    {
+        "id": "860bc6f7da47d3bc",
+        "type": "link in",
+        "z": "e50538167b48902f",
+        "name": "link in 1",
+        "links": [
+            "3cfdc9e07159b543",
+            "fcb6ea685d2eddf2"
+        ],
+        "x": 525,
+        "y": 360,
+        "wires": [
+            [
+                "8bf0852eddc51282"
+            ]
+        ]
+    },
+    {
+        "id": "8bf0852eddc51282",
+        "type": "function",
+        "z": "e50538167b48902f",
+        "name": "function 2",
+        "func": "var status = flow.get(\"basic_discovery\")\nif(status == 0){\n    msg.payload = \"Stopped\";\n}\nelse{\n    msg.payload = \"Started\";\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 640,
+        "y": 360,
+        "wires": [
+            [
+                "af095525d22da7fc"
+            ]
+        ]
+    },
+    {
+        "id": "af095525d22da7fc",
+        "type": "ui_text",
+        "z": "e50538167b48902f",
+        "group": "91ee4ef455b0dd3f",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Status",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 790,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "3f39832282e378d0",
+        "type": "ui_group",
+        "name": "Terminal",
+        "tab": "821c2f76fcde6829",
+        "order": 1,
+        "disp": true,
+        "width": 15,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "91ee4ef455b0dd3f",
+        "type": "ui_group",
+        "name": "Start/Stop",
+        "tab": "821c2f76fcde6829",
+        "order": 2,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "821c2f76fcde6829",
+        "type": "ui_tab",
+        "name": "Greengrass Device Simulator",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    }
+]
